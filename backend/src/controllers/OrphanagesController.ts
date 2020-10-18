@@ -33,7 +33,8 @@ export default {
             about,
             instructions,
             opening_hours,
-            open_on_weekends
+            open_on_weekends,
+            whatsapp_number
          } = request.body;
     
         const orphanagesRepository = getRepository(Orphanage);
@@ -51,6 +52,7 @@ export default {
             instructions,
             opening_hours,
             open_on_weekends: open_on_weekends === 'true',
+            whatsapp_number,
             images
          };
 
