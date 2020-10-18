@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import InputMask from 'react-input-mask';
 import { useHistory } from "react-router-dom";
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
@@ -23,6 +24,7 @@ export default function CreateOrphanage() {
   const [instructions, setInstructions] = useState('');
   const [opening_hours, setOpeningHours] = useState('');
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
+  const [whatsapp_number, setWhatsappNumber] = useState('');
   const [images, setImages] = useState<File[]>([]);
   let [previewImages, setPreviewImages] = useState<string[]>([]);
   
@@ -75,6 +77,7 @@ export default function CreateOrphanage() {
     data.append('instructions', instructions);
     data.append('opening_hours', opening_hours);
     data.append('open_on_weekends', String(open_on_weekends));
+    data.append('whatsapp_number', whatsapp_number);
     
     images.forEach((image) => {
       data.append('images', image);
@@ -125,11 +128,21 @@ export default function CreateOrphanage() {
 
             <div className="input-block">
               <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
-              <textarea
+              <input
                 id="name"
-                maxLength={300}
                 value={about}
                 onChange={e => setAbout(e.target.value)}
+              />
+            </div>
+
+            <div className="input-block">
+              <label htmlFor="whatsapp_number">Número de WhatsApp</label>
+              <InputMask
+                mask="+55\ (\099)\ 99999-9999"
+                maskChar=" "
+                id="whatsapp_number"
+                value={whatsapp_number}
+                onChange={e => setWhatsappNumber(e.target.value)}
               />
             </div>
 
