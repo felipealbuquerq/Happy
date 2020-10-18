@@ -12,6 +12,7 @@
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.7.5",
     "@react-navigation/stack": "^5.9.2",
+    "axios": "^0.20.0",
     "expo": "~39.0.2",
     "expo-constants": "~9.2.0",
     "expo-font": "~8.3.0",
@@ -24,10 +25,10 @@
     "react-native-maps": "0.27.1",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.4",
-    "react-native-screens": "~2.10.1",
-    "react-native-web": "~0.13.12"
+    "react-native-screens": "~2.10.1"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
