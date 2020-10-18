@@ -41,17 +41,14 @@ export default function CreateOrphanage() {
     }
 
     const selectedImages = Array.from(event.target.files);
+    const allSelectedImages = [...images, ...selectedImages];    
     
-    selectedImages.forEach(selectedImage => {
-      images.push(selectedImage);              
-    });
-    
-    const selectedImagesPreview = images.map((image) => {
+    const selectedImagesPreview = allSelectedImages.map((image) => {
       return URL.createObjectURL(image)
     });
 
     setPreviewImages(selectedImagesPreview);
-    setImages(images);
+    setImages(allSelectedImages);
   }
 
   async function handleCancelImage(image: string, index: number) {    
