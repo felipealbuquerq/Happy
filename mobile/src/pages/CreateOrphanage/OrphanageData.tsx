@@ -12,6 +12,7 @@ import {
 import { Feather } from '@expo/vector-icons';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { TextInputMask } from 'react-native-masked-text'
 import * as ImagePicker from 'expo-image-picker';
 import api from '../../services/api';
 
@@ -28,6 +29,7 @@ export default function OrphanageData() {
   const [instructions, setInstructions] = useState('');
   const [opening_hours, setOpeningHours] = useState('');
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
+  const [whatsapp_number, setWhatsAppNumber] = useState('');
   const [images, setImages] = useState<string[]>([]);
 
   const navigation = useNavigation();
@@ -46,6 +48,7 @@ export default function OrphanageData() {
     data.append('open_on_weekends', String(open_on_weekends));
     data.append('latitude', String(latitude));
     data.append('longitude', String(longitude));
+    data.append('whatsapp_number', whatsapp_number);
 
     images.forEach((image, index) => {
       data.append('images', {
@@ -101,10 +104,19 @@ export default function OrphanageData() {
         onChangeText={setAbout}
       />
 
-      {/* <Text style={styles.label}>Whatsapp</Text>
-      <TextInput
-        style={styles.input}
-      /> */}
+      <Text style={styles.label}>Whatsapp</Text>
+      <TextInputMask
+        type={'cel-phone'}
+        options={{
+          maskType: 'BRL',
+          withDDD: true,
+          dddMask: '(99) '
+        }}
+        value={whatsapp_number}
+        onChangeText={text => {
+          setWhatsAppNumber(text)
+        }}
+      />
 
       <Text style={styles.label}>Fotos</Text>
 
