@@ -41,7 +41,7 @@ export default {
     
         const requestImages = request.files as Express.Multer.File[];
         const images = requestImages.map(image => {
-            return { path: image.filename }
+            return { path: encodeURIComponent(image.filename) }
         }); 
 
         const data = {
